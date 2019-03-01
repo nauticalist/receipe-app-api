@@ -12,7 +12,6 @@ COPY ./app /app
 # Create user to run the app only
 RUN adduser -D django
 RUN chown -R django:django /app
-RUN chmod -R 777 /app
 USER django
 
 
