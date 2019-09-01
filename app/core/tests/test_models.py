@@ -71,7 +71,7 @@ class ModelTests(TestCase):
         Test the ingredient string representation
         """
         ingredient = models.Ingredient.objects.create(
-            user=sample_user,
+            user=sample_user(),
             name='Cucumber'
         )
 

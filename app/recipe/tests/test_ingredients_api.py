@@ -36,7 +36,7 @@ class PrivateIngredientsApiTests(TestCase):
     """
     def setUp(self):
         self.client = APIClient()
-        self.user = get_user_model().objects.create(
+        self.user = get_user_model().objects.create_user(
             'test@domain.tld',
             'testpass'
         )
@@ -54,12 +54,12 @@ class PrivateIngredientsApiTests(TestCase):
         ingredients = Ingredient.objects.all().order_by('-name')
         serializer = IngredientSerializer(ingredients, many=True)
 
-        self.assertTrue(resp.status_code, status.HTTP_200_OK)
+        self.assertEqual(resp.status_code, status.HTTP_200_OK)
         self.assertEqual(resp.data, serializer.data)
 
     def test_ingredients_limited_to_user(self):
         """
-        Test only ingredients blong to authenticated user returns
+        Test only ingredients belong to authenticated user returns
         """
         user2 = get_user_model().objects.create_user(
             'other@domain.tld',
