@@ -1,4 +1,4 @@
-FROM python:3.7.2-alpine
+FROM python:3.7.4-alpine
 MAINTAINER Seanapse Oü
 
 ENV PYTHONUNBUFFERED 1
@@ -21,5 +21,3 @@ COPY ./app /app
 RUN adduser -D django
 RUN chown -R django:django /app
 USER django
-
-
